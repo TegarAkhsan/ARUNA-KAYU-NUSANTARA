@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Introduction } from './components/Introduction';
@@ -15,15 +15,59 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { ProductDetailModal } from './components/ProductDetailModal';
-import { ProjectDetailModal } from './components/ProjectDetailModal';
+import { ProjectDetailPage } from './components/ProjectDetailPage';
 import type { Product } from './data/products';
 import type { ProjectItem } from './data/projects';
+import { projectsData } from './data/projects';
 
 export function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
+  // Sync hash routing for dedicated project page: #project/{project-id}
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#project/')) {
+        const projectId = hash.replace('#project/', '');
+        const found = projectsData.find((p) => p.id === projectId);
+        if (found) {
+          setSelectedProject(found);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      }
+      if (!hash.startsWith('#project/')) {
+        setSelectedProject(null);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleSelectProject = (project: ProjectItem) => {
+    setSelectedProject(project);
+    window.location.hash = `project/${project.id}`;
+  };
+
+  const handleBackToProjects = () => {
+    setSelectedProject(null);
+    window.location.hash = 'projects';
+    setTimeout(() => {
+      const element = document.getElementById('projects');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   const scrollToSection = (id: string) => {
+    if (selectedProject) {
+      setSelectedProject(null);
+      window.location.hash = id;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -31,76 +75,82 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1F1F1D] flex flex-col font-sans selection:bg-[#A47C52] selection:text-white">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#191816] flex flex-col font-sans selection:bg-[#C59B6D] selection:text-white">
       {/* Sticky Luxury Navbar */}
       <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Content Area: Either Dedicated Project Page or Full Home Showcase */}
       <main className="flex-1">
-        {/* Hero Section with High Impact Typography & Visual */}
-        <Hero 
-          onExploreClick={() => scrollToSection('products')} 
-        />
+        {selectedProject ? (
+          /* Dedicated Standalone Project Page */
+          <ProjectDetailPage 
+            project={selectedProject} 
+            onBack={handleBackToProjects}
+            onSelectOtherProject={handleSelectProject}
+          />
+        ) : (
+          /* Full Homepage Sections */
+          <>
+            {/* Hero Section with Framed Card Visual & High Impact Typography */}
+            <Hero 
+              onExploreClick={() => scrollToSection('products')} 
+            />
 
-        {/* Short Introduction & Philosophy */}
-        <Introduction 
-          onAboutClick={() => scrollToSection('about')} 
-        />
+            {/* Short Introduction & Philosophy */}
+            <Introduction 
+              onAboutClick={() => scrollToSection('about')} 
+            />
 
-        {/* Featured Products (Oslo Chair, Arlo Table, Nara Cabinet, Kanso Desk) */}
-        <FeaturedProducts 
-          onSelectProduct={(product) => setSelectedProduct(product)}
-          onViewAllClick={() => scrollToSection('products')}
-        />
+            {/* Featured Products */}
+            <FeaturedProducts 
+              onSelectProduct={(product) => setSelectedProduct(product)}
+              onViewAllClick={() => scrollToSection('products')}
+            />
 
-        {/* About Us Detailed Story & Values */}
-        <AboutUs />
+            {/* About Us Detailed Story with Notched Architectural Frame */}
+            <AboutUs />
 
-        {/* Full Interactive Product Catalog with Filter & Search */}
-        <ProductCatalog 
-          onSelectProduct={(product) => setSelectedProduct(product)}
-        />
+            {/* Bento Grid Stats & Trust Pillars */}
+            <WhyChooseUs />
 
-        {/* Dedicated Custom Furniture Section (5 Steps Process) */}
-        <CustomFurniture />
+            {/* Full Interactive Product Catalog with Filter & Search */}
+            <ProductCatalog 
+              onSelectProduct={(product) => setSelectedProduct(product)}
+            />
 
-        {/* Projects / Portfolio Editorial Masonry & Details */}
-        <ProjectsPortfolio 
-          onSelectProject={(project) => setSelectedProject(project)}
-        />
+            {/* Custom Furniture Process: 1st Card Gold, Rest Minimalist */}
+            <CustomFurniture />
 
-        {/* Comprehensive Services Breakdown */}
-        <Services />
+            {/* Widescreen Projects Portfolio */}
+            <ProjectsPortfolio 
+              onSelectProject={handleSelectProject}
+            />
 
-        {/* Why Choose Us & Animated Stats Counter */}
-        <WhyChooseUs />
+            {/* Comprehensive Services Breakdown */}
+            <Services />
 
-        {/* Client & B2B Testimonials */}
-        <Testimonials />
+            {/* Client Testimonials with Circular Avatars */}
+            <Testimonials />
 
-        {/* Frequently Asked Questions */}
-        <FAQ />
+            {/* Frequently Asked Questions */}
+            <FAQ />
 
-        {/* Contact Section, Netlify Forms & Google Maps Location */}
-        <ContactSection />
+            {/* Contact Section, Netlify Forms & Google Maps Location */}
+            <ContactSection />
+          </>
+        )}
       </main>
 
-      {/* Footer */}
+      {/* Footer with Studio Transformation Banner */}
       <Footer />
 
-      {/* Persistent Floating WhatsApp with Status Bubble */}
+      {/* Persistent Floating WhatsApp */}
       <FloatingWhatsApp />
 
       {/* Product Detail Modal */}
       <ProductDetailModal 
         product={selectedProduct} 
         onClose={() => setSelectedProduct(null)} 
-      />
-
-      {/* Project Detail Modal */}
-      <ProjectDetailModal 
-        project={selectedProject} 
-        onClose={() => setSelectedProject(null)} 
       />
     </div>
   );

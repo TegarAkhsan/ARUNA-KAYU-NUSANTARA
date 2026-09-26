@@ -16,18 +16,7 @@ export const Footer: React.FC = () => {
         
         {/* Massive Studio CTA Banner (Exact Style from Reference bottom: 'Aestic Studio / Start Your Transformation') */}
         <div className="relative rounded-[2.5rem] bg-[#221F1C] border border-white/10 p-10 sm:p-16 lg:p-20 overflow-hidden mb-20 text-center">
-          {/* Subtle Watermark Typography behind */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
-            <span className="font-serif text-[12vw] font-black uppercase text-white whitespace-nowrap">
-              ARUNA STUDIO
-            </span>
-          </div>
-
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white text-[11px] font-semibold tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C59B6D]" />
-              <span>ARUNA Living Studio</span>
-            </div>
 
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
               Start Your Interior &amp; <br />

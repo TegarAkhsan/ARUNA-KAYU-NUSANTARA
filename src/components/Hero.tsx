@@ -14,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
     <section id="home" className="relative min-h-[94vh] flex flex-col justify-between pt-28 pb-8 px-4 sm:px-8 overflow-hidden">
       {/* Container Card with Rounded Corners like Reference */}
       <div className="relative flex-1 w-full max-w-7xl mx-auto rounded-[2.5rem] overflow-hidden flex flex-col justify-between p-8 sm:p-14 lg:p-16 border border-[#E7E2DA]/60 shadow-2xl">
-        
+
         {/* Cinematic Warm Interior Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -26,13 +26,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-[#191816]/80 via-[#191816]/30 to-[#191816]/50" />
         </div>
 
-        {/* Top Tag - Clean minimalist with warm orange dot */}
-        <div className="relative z-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[11px] font-medium tracking-wider uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C59B6D]" />
-            <span>Premium Furniture &amp; Interior Craftsmanship</span>
-          </div>
-        </div>
+
 
         {/* Center Content - High Impact Editorial Typography */}
         <div className="relative z-10 my-auto text-center max-w-4xl mx-auto py-10 sm:py-16">
