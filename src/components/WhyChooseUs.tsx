@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { CheckCircle, Award, Clock, Hammer, HeartHandshake, Layers } from 'lucide-react';
-import { companyData } from '../data/company';
+import { ArrowUpRight, ArrowRight, MapPin } from 'lucide-react';
+import { companyData, getWhatsAppUrl } from '../data/company';
 
 export const WhyChooseUs: React.FC = () => {
   const [counts, setCounts] = useState<number[]>([0, 0, 0, 0]);
@@ -15,8 +15,8 @@ export const WhyChooseUs: React.FC = () => {
 
           companyData.stats.forEach((stat, index) => {
             const target = stat.numeric;
-            const duration = 1800; // ms
-            const steps = 40;
+            const duration = 1600;
+            const steps = 35;
             const stepTime = duration / steps;
             let current = 0;
             const increment = target / steps;
@@ -46,80 +46,130 @@ export const WhyChooseUs: React.FC = () => {
     return () => observer.disconnect();
   }, [hasAnimated]);
 
-  const getPillarIcon = (index: number) => {
-    switch (index) {
-      case 0:
-        return <Clock className="w-5 h-5 text-[#A47C52]" />;
-      case 1:
-        return <Hammer className="w-5 h-5 text-[#A47C52]" />;
-      case 2:
-        return <Layers className="w-5 h-5 text-[#A47C52]" />;
-      case 3:
-        return <Award className="w-5 h-5 text-[#A47C52]" />;
-      case 4:
-        return <HeartHandshake className="w-5 h-5 text-[#A47C52]" />;
-      default:
-        return <CheckCircle className="w-5 h-5 text-[#A47C52]" />;
-    }
-  };
-
   return (
-    <section ref={sectionRef} className="py-24 sm:py-32 bg-[#FAF9F5] border-t border-[#E8E4DC]">
+    <section ref={sectionRef} className="py-24 sm:py-32 bg-[#FAF8F5] border-t border-[#E7E2DA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Animated Stats Banner from Brief */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#1F1F1D] text-[#FAF9F5] mb-20 shadow-xl relative overflow-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
-            {companyData.stats.map((st, idx) => (
-              <div key={idx} className="space-y-1">
-                <div className="font-serif text-3xl sm:text-5xl font-bold text-[#FAF9F5] tracking-tight">
-                  {counts[idx]}
-                  <span className="text-[#A47C52]">{st.suffix}</span>
-                </div>
-                <div className="text-xs sm:text-sm text-[#FAF9F5]/70 uppercase tracking-wider font-medium">
-                  {st.label}
-                </div>
-              </div>
-            ))}
+        {/* Editorial Bento Grid (Exact Style from Reference) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-24">
+          
+          {/* Left Large Architectural Photo with Custom Cutout */}
+          <div className="lg:col-span-5 relative rounded-[2.5rem] rounded-tl-[4.5rem] overflow-hidden shadow-xl border border-[#E7E2DA] min-h-[420px] bg-[#F3EFEA]">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80"
+              alt="ARUNA Living Architectonic Living Room"
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Top-Right Location Tag */}
+            <div className="absolute top-5 right-5 px-3 py-1.5 rounded-full bg-[#191816]/70 backdrop-blur-md text-white text-[11px] font-medium flex items-center gap-1.5">
+              <MapPin className="w-3 h-3 text-[#C59B6D]" />
+              <span>Surabaya, Jawa Timur</span>
+            </div>
           </div>
-        </div>
 
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#A47C52] block mb-3">
-            Excellence &amp; Trust
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1F1F1D] mb-4">
-            Why ARUNA Living?
-          </h2>
-          <p className="text-xs sm:text-sm text-[#1F1F1D]/70 leading-relaxed">
-            Komitmen kami terhadap mutu material, presisi produksi, dan kepuasan Anda dalam setiap jengkal ruang.
-          </p>
-        </div>
-
-        {/* 5 Points Grid from Brief */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {companyData.whyChooseUs.map((item, idx) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-2xl p-7 border border-[#E8E4DC] hover:border-[#A47C52] transition-all duration-300 hover:shadow-lg flex flex-col justify-between group"
-            >
+          {/* Right 2x2 Bento Cards Grid */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            {/* Card 1: 10+ Years */}
+            <div className="bg-white rounded-3xl p-8 border border-[#E7E2DA] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-[#F5F1EA] flex items-center justify-center mb-6 group-hover:bg-[#1F1F1D] group-hover:text-white transition-colors">
-                  {getPillarIcon(idx)}
+                <div className="font-serif text-4xl sm:text-5xl font-bold text-[#191816] tracking-tight mb-2">
+                  {counts[0]}<span className="text-[#C59B6D]">+</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-wider font-semibold text-[#A47C52] mb-1">
-                  {item.highlight}
+                <div className="text-xs uppercase tracking-wider font-semibold text-[#191816]/60">
+                  Years of Experience
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-[#1F1F1D] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-[#1F1F1D]/75 leading-relaxed">
-                  {item.description}
+                <p className="text-xs text-[#191816]/70 mt-3 leading-relaxed">
+                  Pengalaman terbukti dalam fabrikasi furniture kayu jati solid untuk hunian dan proyek komersial.
                 </p>
               </div>
+              <div className="pt-6 flex justify-end">
+                <a
+                  href="#about"
+                  className="w-10 h-10 rounded-full bg-[#191816] hover:bg-[#C59B6D] text-white flex items-center justify-center transition-colors shadow-sm"
+                  aria-label="Pelajari pengalaman ARUNA"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
             </div>
-          ))}
+
+            {/* Card 2: 500+ Tailored Projects */}
+            <div className="bg-white rounded-3xl p-8 border border-[#E7E2DA] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="font-serif text-4xl sm:text-5xl font-bold text-[#191816] tracking-tight mb-2">
+                  {counts[1]}<span className="text-[#C59B6D]">+</span>
+                </div>
+                <div className="text-xs uppercase tracking-wider font-semibold text-[#191816]/60">
+                  Tailored Design Projects
+                </div>
+                <p className="text-xs text-[#191816]/70 mt-3 leading-relaxed">
+                  Ratusan proyek villa, hotel, kantor, cafe, dan residential diselesaikan dengan presisi.
+                </p>
+              </div>
+              <div className="pt-6 flex justify-end">
+                <a
+                  href="#projects"
+                  className="w-10 h-10 rounded-full bg-[#191816] hover:bg-[#C59B6D] text-white flex items-center justify-center transition-colors shadow-sm"
+                  aria-label="Lihat portofolio proyek"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Card 3: 1,200+ Happy Clients */}
+            <div className="bg-white rounded-3xl p-8 border border-[#E7E2DA] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="font-serif text-4xl sm:text-5xl font-bold text-[#191816] tracking-tight mb-2">
+                  {counts[2]}<span className="text-[#C59B6D]">+</span>
+                </div>
+                <div className="text-xs uppercase tracking-wider font-semibold text-[#191816]/60">
+                  Happy Clients &amp; Partners
+                </div>
+                <p className="text-xs text-[#191816]/70 mt-3 leading-relaxed">
+                  Dipercaya arsitek, desainer interior ternama, serta pemilik rumah di seluruh Indonesia.
+                </p>
+              </div>
+              <div className="pt-6 flex justify-end">
+                <a
+                  href="#contact"
+                  className="w-10 h-10 rounded-full bg-[#191816] hover:bg-[#C59B6D] text-white flex items-center justify-center transition-colors shadow-sm"
+                  aria-label="Hubungi kami"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Card 4: Dark Espresso Card with Button (Exact match from reference!) */}
+            <div className="bg-[#1E1A17] text-white rounded-3xl p-8 border border-[#332C26] shadow-xl flex flex-col justify-between">
+              <div>
+                <div className="font-serif text-4xl sm:text-5xl font-bold text-[#C59B6D] tracking-tight mb-2">
+                  {counts[3]}<span className="text-white">+</span>
+                </div>
+                <div className="text-xs uppercase tracking-wider font-semibold text-white/60">
+                  Master Craftsmen &amp; Engineers
+                </div>
+                <p className="text-xs text-white/75 mt-3 leading-relaxed">
+                  Didukung workshop mandiri berteknologi presisi dan tim quality control 3 tahap.
+                </p>
+              </div>
+              <div className="pt-6">
+                <a
+                  href={getWhatsAppUrl("Halo ARUNA Living, saya ingin berkonsultasi mengenai furniture.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C59B6D] hover:bg-[#b0875b] text-white rounded-full text-xs font-semibold tracking-wider uppercase transition-colors"
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
       </div>

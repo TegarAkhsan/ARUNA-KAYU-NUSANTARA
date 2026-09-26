@@ -1,123 +1,73 @@
-import React from 'react';
-import { ShieldCheck, Hammer, Handshake, Leaf, MapPin } from 'lucide-react';
-import { companyData } from '../data/company';
+import { ArrowRight, MapPin } from 'lucide-react';
 
 export const AboutUs: React.FC = () => {
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'ShieldCheck':
-        return <ShieldCheck className="w-5 h-5 text-[#A47C52]" />;
-      case 'Hammer':
-        return <Hammer className="w-5 h-5 text-[#A47C52]" />;
-      case 'Handshake':
-        return <Handshake className="w-5 h-5 text-[#A47C52]" />;
-      case 'Leaf':
-        return <Leaf className="w-5 h-5 text-[#A47C52]" />;
-      default:
-        return <ShieldCheck className="w-5 h-5 text-[#A47C52]" />;
-    }
-  };
-
   return (
-    <section id="about" className="py-24 sm:py-32 bg-[#FAF9F5] border-t border-[#E8E4DC]">
+    <section id="about" className="py-24 sm:py-32 bg-[#FAF8F5] border-t border-[#E7E2DA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+        {/* Main Editorial Row - Left Text, Right Architectural Cutout Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-24">
+          
+          {/* Left Text Column */}
           <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#A47C52] block">
-              Tentang ARUNA Living
-            </span>
-            
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1F1F1D] leading-tight">
-              {companyData.aboutTitle}
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-semibold text-[#191816]">
+              <span className="w-2 h-2 rounded-full bg-[#C59B6D]" />
+              <span>About Us</span>
+            </div>
+
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-[#191816] leading-[1.08] tracking-tight">
+              Design Rooted in <br />
+              Craft, Materiality, <br />
+              and <span className="text-[#C59B6D] italic font-normal">Longevity</span>
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base text-[#1F1F1D]/80 leading-relaxed font-normal">
-              {companyData.aboutStory.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+            <div className="space-y-4 text-sm sm:text-base text-[#191816]/75 leading-relaxed font-normal max-w-lg">
+              <p>
+                ARUNA Living berdiri dengan visi menghadirkan furniture yang tidak hanya memiliki nilai estetika tinggi, tetapi juga menjadi bagian hidup dari penggunanya dalam jangka panjang.
+              </p>
+              <p>
+                Melalui perpaduan kayu jati solid pilihan Indonesia, sentuhan perajin berpengalaman, dan presisi mesin modern, kami mentransformasi rumah tinggal serta ruang komersial menjadi tempat yang hangat dan berkarakter.
+              </p>
             </div>
 
-            <div className="pt-4 flex items-center gap-3 text-xs text-[#1F1F1D]/70 font-medium">
-              <MapPin className="w-4 h-4 text-[#A47C52]" />
-              <span>Workshop &amp; Showroom: {companyData.address.full}</span>
+            <div className="pt-2">
+              <a
+                href="#custom"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#191816] hover:bg-[#C59B6D] text-white rounded-full text-xs font-semibold tracking-wider uppercase transition-colors shadow-sm group"
+              >
+                <span>Learn More</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
           </div>
 
-          {/* Visual Editorial Image Collage */}
-          <div className="lg:col-span-6 grid grid-cols-12 gap-4">
-            <div className="col-span-7 aspect-[4/5] rounded-2xl overflow-hidden shadow-lg border border-[#E8E4DC] relative bg-[#F5F1EA]">
+          {/* Right Column: Architectural Notched Photo Frame from Reference */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative aspect-[4/3] rounded-[2.5rem] rounded-br-[5rem] overflow-hidden shadow-2xl border border-[#E7E2DA] bg-[#F3EFEA]">
               <img
-                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
-                alt="Woodcrafting precision"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80';
-                }}
+                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80"
+                alt="Interior Dining & Living Room Architecture"
+                className="w-full h-full object-cover object-center"
               />
-              <div className="absolute bottom-4 left-4 right-4 p-3 bg-[#1F1F1D]/80 backdrop-blur-md rounded-xl text-white text-xs">
-                <span className="font-serif font-bold text-sm block">Kiln-Dried Timber</span>
-                <span className="text-[10px] text-white/70">Kadar air terkontrol mencegah kayu melengkung</span>
-              </div>
-            </div>
-            <div className="col-span-5 flex flex-col gap-4">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-md border border-[#E8E4DC] bg-[#F5F1EA]">
-                <img
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80"
-                  alt="Craftsman Handwork"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80';
-                  }}
-                />
-              </div>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-[#E8E4DC] bg-[#1F1F1D] p-5 flex flex-col justify-between text-[#FAF9F5]">
-                <div className="text-[10px] uppercase tracking-widest text-[#A47C52] font-semibold">Dedikasi</div>
-                <div className="font-serif text-xl sm:text-2xl font-bold leading-tight">
-                  10+ Tahun Menghidupkan Ruang
-                </div>
-                <div className="text-[10px] text-white/60">Surabaya • Jawa Timur</div>
+              
+              {/* Location Badge on Image */}
+              <div className="absolute bottom-5 right-6 px-3 py-1.5 rounded-full bg-[#191816]/70 backdrop-blur-md text-white text-[11px] font-medium flex items-center gap-1.5">
+                <MapPin className="w-3 h-3 text-[#C59B6D]" />
+                <span>Surabaya, Indonesia</span>
               </div>
             </div>
           </div>
+
         </div>
 
-        {/* Company Values Detailed Cards from Brief */}
-        <div className="pt-8">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#A47C52] block mb-2">
-              Our Foundations
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#1F1F1D]">
-              Empat Nilai Utama Perusahaan
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {companyData.values.map((v) => (
-              <div
-                key={v.id}
-                className="p-8 rounded-2xl bg-white border border-[#E8E4DC] hover:border-[#A47C52] transition-all duration-300 hover:shadow-lg flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="font-serif text-3xl font-bold text-[#E8E4DC] group-hover:text-[#A47C52]">
-                      {v.number}
-                    </span>
-                    <div className="w-10 h-10 rounded-full bg-[#F5F1EA] flex items-center justify-center">
-                      {getIcon(v.icon)}
-                    </div>
-                  </div>
-                  <h4 className="font-serif text-xl font-semibold text-[#1F1F1D] mb-3">
-                    {v.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-[#1F1F1D]/75 leading-relaxed">
-                    {v.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+        {/* Minimalist Partner / Standard Logos Strip (as seen in Reference) */}
+        <div className="pt-8 pb-4 border-t border-[#E7E2DA]/80">
+          <div className="flex flex-wrap items-center justify-between gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+            <div className="font-serif font-bold text-lg tracking-wider text-[#191816]">PERHUTANI TEAK</div>
+            <div className="font-sans font-bold text-sm tracking-widest uppercase text-[#191816]">KILN-DRIED TIMBER</div>
+            <div className="font-serif font-semibold text-lg italic text-[#191816]">Blum Hardware</div>
+            <div className="font-sans font-bold text-sm tracking-widest uppercase text-[#191816]">HETTICH GERMANY</div>
+            <div className="font-serif font-bold text-base tracking-widest text-[#191816]">SUNBRELLA FABRIC</div>
           </div>
         </div>
 

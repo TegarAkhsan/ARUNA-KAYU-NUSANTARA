@@ -16,35 +16,35 @@ export const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ onSelectPr
   }, [activeCategory]);
 
   return (
-    <section id="projects" className="py-24 sm:py-32 bg-[#FAF9F5] border-t border-[#E8E4DC]">
+    <section id="projects" className="py-24 sm:py-32 bg-[#FAF8F5] border-t border-[#E7E2DA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div>
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#A47C52] block mb-3">
-              Selected Works
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1F1F1D]">
-              Portofolio Project
-            </h2>
+        {/* Section Header (Exact Style from Reference: 'A Curated Selection of Our Interior Projects') */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-semibold text-[#C59B6D] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C59B6D]" />
+            <span>Selected Portfolio</span>
           </div>
-          <p className="text-xs sm:text-sm text-[#1F1F1D]/70 max-w-md">
-            Dokumentasi hasil pengerjaan furniture residential prestisius, cafe, hotel, dan ruang komersial yang telah kami selesaikan di Surabaya dan kota lainnya.
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#191816] tracking-tight mb-4">
+            A Curated Selection of <br />
+            Our Furniture &amp; Interior Projects
+          </h2>
+          <p className="text-xs sm:text-sm text-[#191816]/70 max-w-lg mx-auto leading-relaxed">
+            Eksplorasi portofolio pengerjaan furniture custom kami untuk hunian pribadi, villa, hotel, dan kantor di Surabaya dan sekitarnya.
           </p>
         </div>
 
-        {/* Filter Categories */}
-        <div className="flex flex-wrap items-center gap-2 mb-12">
+        {/* Filter Categories Pill Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
           {projectCategories.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+              className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
                 activeCategory === cat
-                  ? 'bg-[#1F1F1D] text-[#FAF9F5] shadow-sm'
-                  : 'bg-white text-[#1F1F1D]/70 hover:text-[#1F1F1D] hover:bg-[#E8E4DC]/60 border border-[#E8E4DC]'
+                  ? 'bg-[#191816] text-white shadow-sm'
+                  : 'bg-white text-[#191816]/70 hover:text-[#191816] hover:bg-[#F3EFEA] border border-[#E7E2DA]'
               }`}
             >
               {cat}
@@ -52,88 +52,84 @@ export const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ onSelectPr
           ))}
         </div>
 
-        {/* Editorial Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => {
-            const isFeatured = index === 0;
-            return (
-              <div
-                key={project.id}
-                onClick={() => onSelectProject(project)}
-                className={`group cursor-pointer bg-white rounded-2xl overflow-hidden border border-[#E8E4DC] hover:border-[#A47C52] transition-all duration-300 hover:shadow-xl flex flex-col justify-between ${
-                  isFeatured ? 'md:col-span-2 lg:col-span-2' : ''
-                }`}
-              >
-                {/* Thumbnail Image Container */}
-                <div className={`relative overflow-hidden bg-[#F5F1EA] ${isFeatured ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}>
-                  <img
-                    src={project.thumbnail}
-                    alt={project.title}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-106"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F1F1D]/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  
-                  {/* Floating Tags */}
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="px-2.5 py-1 bg-[#1F1F1D]/80 backdrop-blur-md text-white text-[10px] font-mono tracking-widest rounded">
-                      {project.code}
+        {/* Widescreen Cinematic Project Cards (Matching Reference Visual) */}
+        <div className="space-y-10">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => onSelectProject(project)}
+              className="group cursor-pointer bg-white rounded-[2rem] overflow-hidden border border-[#E7E2DA] hover:border-[#C59B6D]/60 transition-all duration-300 hover:shadow-xl grid grid-cols-1 lg:grid-cols-12 items-stretch"
+            >
+              {/* Image Container with Custom Rounding */}
+              <div className="lg:col-span-7 relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto overflow-hidden bg-[#F3EFEA]">
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#191816]/60 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
+                
+                {/* Floating Category Tag */}
+                <div className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-[#191816]/70 backdrop-blur-md text-white text-[11px] uppercase tracking-wider font-semibold">
+                  {project.category}
+                </div>
+              </div>
+
+              {/* Text & Meta Column */}
+              <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between bg-white">
+                <div>
+                  <div className="flex items-center gap-3 text-xs text-[#C59B6D] font-semibold mb-3">
+                    <span className="flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {project.location}
                     </span>
-                    <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[#1F1F1D] text-[10px] uppercase tracking-wider font-semibold rounded">
-                      {project.category}
+                    <span>•</span>
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {project.year}
                     </span>
                   </div>
 
-                  {/* Corner Action Icon */}
-                  <div className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white text-[#1F1F1D] flex items-center justify-center shadow-md group-hover:bg-[#A47C52] group-hover:text-white transition-colors">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#191816] group-hover:text-[#C59B6D] transition-colors mb-4">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-[#191816]/75 leading-relaxed mb-6 font-normal">
+                    {project.summary}
+                  </p>
+
+                  {/* Scope tags */}
+                  <div className="space-y-1.5 border-t border-[#E7E2DA] pt-4">
+                    <span className="text-[10px] uppercase tracking-wider text-[#191816]/50 font-semibold block mb-2">
+                      Scope of Work:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.scope.map((item, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2.5 py-1 bg-[#FAF8F5] border border-[#E7E2DA] text-[#191816] text-[11px] rounded-lg font-medium"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom View Project Trigger */}
+                <div className="pt-8 flex items-center justify-between border-t border-[#E7E2DA] mt-6">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#C59B6D] group-hover:underline">
+                    View Project Case Study
+                  </span>
+                  <div className="w-10 h-10 rounded-full bg-[#191816] group-hover:bg-[#C59B6D] text-white flex items-center justify-center transition-colors shadow-sm">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
 
-                {/* Info Card Content */}
-                <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 text-xs text-[#A47C52] font-medium mb-2">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5" />
-                        {project.location}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {project.year}
-                      </span>
-                    </div>
-
-                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F1F1D] group-hover:text-[#A47C52] transition-colors mb-2">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-[#1F1F1D]/70 line-clamp-2 leading-relaxed mb-4">
-                      {project.summary}
-                    </p>
-                  </div>
-
-                  {/* Scope Badges */}
-                  <div className="pt-4 border-t border-[#E8E4DC] flex flex-wrap gap-1.5">
-                    {project.scope.slice(0, 3).map((item, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2.5 py-1 bg-[#FAF9F5] border border-[#E8E4DC] text-[#1F1F1D]/80 text-[11px] rounded-md font-medium"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                    {project.scope.length > 3 && (
-                      <span className="px-2 py-1 text-[#A47C52] text-[11px] font-semibold">
-                        +{project.scope.length - 3} lainnya
-                      </span>
-                    )}
-                  </div>
-                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
       </div>

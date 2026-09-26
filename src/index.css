@@ -2,61 +2,64 @@
 
 @layer base {
   :root {
-    --color-primary: #1F1F1D;
-    --color-secondary: #F5F1EA;
-    --color-accent: #A47C52;
-    --color-accent-light: #C9A984;
-    --color-bg-warm: #FAF9F5;
-    --color-surface: #FFFFFF;
-    --color-border: #E8E4DC;
+    --color-primary: #191816;
+    --color-secondary: #F3EFEA;
+    --color-accent: #C59B6D;
+    --color-accent-dark: #A4784C;
+    --color-bg-warm: #FAF8F5;
+    --color-card: #FFFFFF;
+    --color-border: #E7E2DA;
   }
 
   html {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #1F1F1D;
-    background-color: #FAF9F5;
+    color: #191816;
+    background-color: #FAF8F5;
   }
 
-  h1, h2, h3, .font-serif {
+  h1, h2, h3, h4, .font-serif {
     font-family: 'Playfair Display', Georgia, serif;
   }
 }
 
-/* Custom Scrollbar for Luxury Feel */
+/* Custom Scrollbar for Luxury Editorial Feel */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F1EA;
+  background: #FAF8F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4C9BC;
-  border-radius: 4px;
+  background: #D4CBBB;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A47C52;
+  background: #C59B6D;
 }
 
-/* Smooth Image Reveal Styles */
-.image-zoom-container {
-  overflow: hidden;
-}
-.image-zoom-container img {
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.image-zoom-container:hover img {
-  transform: scale(1.06);
+/* Asymmetrical Architectural Corner Cutouts (Like Reference) */
+.architectural-corner-tl {
+  border-top-left-radius: 4rem;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
 }
 
-/* Glassmorphism effects */
-.glass-header {
-  background: rgba(250, 249, 245, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+.architectural-corner-br {
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 4.5rem;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.architectural-notch {
+  border-radius: 2.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Editorial Glass Header */
+.glass-nav {
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
