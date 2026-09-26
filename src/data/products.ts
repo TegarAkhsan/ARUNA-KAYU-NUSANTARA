@@ -59,8 +59,8 @@ export const productsData: Product[] = [
     shortDescription: "Kursi santai berdesain Scandinavian kontemporer dengan lekukan ergonomis dan kehangatan kayu solid.",
     fullDescription: "Oslo Lounge Chair dirancang dengan bentuk ergonomis dan desain minimalis yang cocok untuk berbagai konsep interior. Menggunakan struktur rangka kayu solid oven-dried dengan finishing halus bernuansa matte natural, dipadukan bantalan busa high-density berlapis kain woven premium yang breathable dan nyaman diduduki berjam-jam.",
     images: [
-      "https://images.unsplash.com/photo-1580481077195-c3a82da912c3?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1000&q=80"
     ],
     materialsSummary: ["Solid Wood", "Premium Fabric"],
@@ -205,7 +205,7 @@ export const productsData: Product[] = [
     fullDescription: "Alva Platform Bed membawa suasana resort eksklusif ke dalam kamar tidur pribadi Anda. Sambungan mortise and tenon tradisional memastikan ketenangan tidur tanpa bunyi berderit. Tersedia dalam ukuran King (180x200) dan Queen (160x200).",
     images: [
       "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=1000&q=80"
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80"
     ],
     materialsSummary: ["Solid Teak Wood", "Hidden Steel Support"],
     specification: {

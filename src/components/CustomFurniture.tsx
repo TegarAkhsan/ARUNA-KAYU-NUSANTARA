@@ -7,10 +7,6 @@ export const CustomFurniture: React.FC = () => {
 
   return (
     <section id="custom" className="py-24 sm:py-32 bg-[#1F1F1D] text-[#FAF9F5] relative overflow-hidden">
-      {/* Subtle wood texture or warm accent blur background */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#A47C52]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#A47C52]/10 rounded-full blur-3xl pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header from Brief */}
@@ -26,39 +22,35 @@ export const CustomFurniture: React.FC = () => {
           </p>
         </div>
 
-        {/* 5-Step Process Timeline from Brief */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative mb-16">
-          {companyData.customProcess.map((proc, index) => (
+        {/* 5-Step Process Timeline (Clean, Architectural & Modern without floating arrows) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+          {companyData.customProcess.map((proc) => (
             <div
               key={proc.step}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-[#A47C52]/60 transition-all duration-300 flex flex-col justify-between group relative"
+              className="bg-[#2A2A28] border-t-2 border-[#A47C52]/50 hover:border-[#A47C52] rounded-xl p-6 transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-md"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-baseline justify-between mb-4">
                   <span className="font-mono text-2xl font-bold text-[#A47C52]">
                     {proc.step}
                   </span>
-                  <div className="w-2 h-2 rounded-full bg-[#A47C52]/40 group-hover:bg-[#A47C52] transition-colors" />
+                  <span className="text-[10px] uppercase tracking-widest text-[#FAF9F5]/40 font-mono">
+                    Step
+                  </span>
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-white mb-2">
+                <h3 className="font-serif text-lg font-semibold text-white mb-2.5">
                   {proc.title}
                 </h3>
-                <p className="text-xs text-[#FAF9F5]/70 leading-relaxed">
+                <p className="text-xs text-[#FAF9F5]/70 leading-relaxed font-normal">
                   {proc.description}
                 </p>
               </div>
-
-              {index < 4 && (
-                <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-20 text-[#A47C52]/50">
-                  <ArrowRight className="w-5 h-5" />
-                </div>
-              )}
             </div>
           ))}
         </div>
 
         {/* Custom Scope Breakdown & Interactive Box */}
-        <div className="bg-[#FAF9F5] text-[#1F1F1D] rounded-2xl p-8 sm:p-12 border border-[#E8E4DC] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-[#FAF9F5] text-[#1F1F1D] rounded-2xl p-8 sm:p-12 border border-[#E8E4DC] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-lg">
           <div className="lg:col-span-8 space-y-4">
             <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#A47C52]">
               Keahlian Spesialisasi Custom
@@ -88,7 +80,7 @@ export const CustomFurniture: React.FC = () => {
           </div>
 
           <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-[#F5F1EA] rounded-xl border border-[#E8E4DC] text-center space-y-4">
-            <div className="w-12 h-12 rounded-full bg-[#1F1F1D] text-white flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#1F1F1D] text-white flex items-center justify-center shadow-sm">
               <MessageCircle className="w-6 h-6 text-[#F5F1EA]" />
             </div>
             <div>

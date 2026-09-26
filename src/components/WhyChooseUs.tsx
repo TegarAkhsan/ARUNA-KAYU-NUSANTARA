@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { CheckCircle, Award, Sparkles, Clock, Hammer, HeartHandshake } from 'lucide-react';
+import { CheckCircle, Award, Clock, Hammer, HeartHandshake, Layers } from 'lucide-react';
 import { companyData } from '../data/company';
 
 export const WhyChooseUs: React.FC = () => {
@@ -53,7 +53,7 @@ export const WhyChooseUs: React.FC = () => {
       case 1:
         return <Hammer className="w-5 h-5 text-[#A47C52]" />;
       case 2:
-        return <Sparkles className="w-5 h-5 text-[#A47C52]" />;
+        return <Layers className="w-5 h-5 text-[#A47C52]" />;
       case 3:
         return <Award className="w-5 h-5 text-[#A47C52]" />;
       case 4:
@@ -68,9 +68,7 @@ export const WhyChooseUs: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Animated Stats Banner from Brief */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#1F1F1D] text-[#FAF9F5] mb-20 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#A47C52]/10 rounded-full blur-3xl pointer-events-none" />
-          
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#1F1F1D] text-[#FAF9F5] mb-20 shadow-xl relative overflow-hidden">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
             {companyData.stats.map((st, idx) => (
               <div key={idx} className="space-y-1">

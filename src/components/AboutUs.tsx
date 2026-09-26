@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Hammer, Handshake, Leaf, Award, MapPin } from 'lucide-react';
+import { ShieldCheck, Hammer, Handshake, Leaf, MapPin } from 'lucide-react';
 import { companyData } from '../data/company';
 
 export const AboutUs: React.FC = () => {
@@ -25,10 +25,9 @@ export const AboutUs: React.FC = () => {
         {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] font-semibold text-[#A47C52]">
-              <Award className="w-4 h-4" />
-              <span>About PT Aruna Kayu Nusantara</span>
-            </div>
+            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#A47C52] block">
+              Tentang ARUNA Living
+            </span>
             
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1F1F1D] leading-tight">
               {companyData.aboutTitle}
@@ -48,11 +47,14 @@ export const AboutUs: React.FC = () => {
 
           {/* Visual Editorial Image Collage */}
           <div className="lg:col-span-6 grid grid-cols-12 gap-4">
-            <div className="col-span-7 aspect-[4/5] rounded-2xl overflow-hidden shadow-lg border border-[#E8E4DC] relative">
+            <div className="col-span-7 aspect-[4/5] rounded-2xl overflow-hidden shadow-lg border border-[#E8E4DC] relative bg-[#F5F1EA]">
               <img
-                src="https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
                 alt="Woodcrafting precision"
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80';
+                }}
               />
               <div className="absolute bottom-4 left-4 right-4 p-3 bg-[#1F1F1D]/80 backdrop-blur-md rounded-xl text-white text-xs">
                 <span className="font-serif font-bold text-sm block">Kiln-Dried Timber</span>
@@ -60,11 +62,14 @@ export const AboutUs: React.FC = () => {
               </div>
             </div>
             <div className="col-span-5 flex flex-col gap-4">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-md border border-[#E8E4DC]">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-md border border-[#E8E4DC] bg-[#F5F1EA]">
                 <img
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80"
                   alt="Craftsman Handwork"
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80';
+                  }}
                 />
               </div>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-[#E8E4DC] bg-[#1F1F1D] p-5 flex flex-col justify-between text-[#FAF9F5]">
