@@ -14,8 +14,23 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#191816] text-[#FAF8F5] pt-12 pb-12 overflow-hidden border-t border-[#2A2724]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Massive Studio CTA Banner (Exact Style from Reference bottom: 'Aestic Studio / Start Your Transformation') */}
-        <div className="relative rounded-[2.5rem] bg-[#221F1C] border border-white/10 p-10 sm:p-16 lg:p-20 overflow-hidden mb-20 text-center">
+        {/* Massive Studio CTA Banner with Atmospheric Interior Background (Exact Style from Reference) */}
+        <div className="relative rounded-[2.5rem] border border-white/15 p-10 sm:p-16 lg:p-20 overflow-hidden mb-20 text-center bg-[#191816] shadow-2xl">
+          
+          {/* Background Interior Image with Cinematic Moody Vignette Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85"
+              alt="ARUNA Living Studio Atmosphere"
+              className="w-full h-full object-cover object-center filter brightness-[0.38] contrast-[1.1] scale-102"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=85';
+              }}
+            />
+            {/* Soft gradient to keep typography crisp & warm */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#191816]/95 via-[#191816]/70 to-[#191816]/85" />
+          </div>
+
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
 
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
